@@ -5,23 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4",
+    "prettier": "^3.5.3",
     "tailwindcss": "^4.1.8",
     "vite": "^6.3.5"
-  },
-  "scripts": {
-    "dev": "vite",
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
   }
-
-
 }
-
-

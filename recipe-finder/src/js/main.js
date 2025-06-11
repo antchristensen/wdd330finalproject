@@ -1,17 +1,10 @@
 import { initIngredientForm } from "./ingredientForm.mjs";
 import { getRecipesByIngredients } from "./api.mjs";
 import { renderRecipeCards } from "./recipeRenderer.mjs";
+import { showSurpriseRecipe } from "./surpriseRecipe.mjs";
+import { loadPartials } from "./utils.mjs";
 
-function loadPartial(id, path) {
-  fetch(path)
-    .then((res) => res.text())
-    .then((html) => {
-      document.getElementById(id).innerHTML = html;
-    });
-}
-
-loadPartial("site-header", "/header.html");
-loadPartial("site-footer", "/footer.html");
+loadPartials();
 
 function handleIngredientSubmit(ingredientList) {
   getRecipesByIngredients(ingredientList).then((recipes) => {
@@ -20,3 +13,10 @@ function handleIngredientSubmit(ingredientList) {
 }
 
 initIngredientForm(handleIngredientSubmit);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const surpriseBtn = document.getElementById("surprise-btn");
+  if (surpriseBtn) {
+    surpriseBtn.addEventListener("click", showSurpriseRecipe);
+  }
+});
