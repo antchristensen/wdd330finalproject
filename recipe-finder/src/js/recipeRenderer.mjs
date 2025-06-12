@@ -1,3 +1,5 @@
+import { BASE_PATH } from "./utils.mjs";
+
 export function renderRecipeCards(recipes) {
   const container = document.getElementById("recipe-results");
   container.innerHTML = "";
@@ -16,7 +18,7 @@ export function renderRecipeCards(recipes) {
       <h3>${recipe.title}</h3>
       <p><strong>Used:</strong> ${recipe.usedIngredientCount}</p>
       <p><strong>Missed:</strong> ${recipe.missedIngredientCount}</p>
-      <a href="/src/product_pages/recipe-detail.html?id=${recipe.id}" class="view-details-button">🔍 View Recipe</a>
+      <a href="${BASE_PATH}src/product_pages/recipe-detail.html?id=${recipe.id}" class="view-details-button">🔍 View Recipe</a>
     `;
 
     container.appendChild(card);

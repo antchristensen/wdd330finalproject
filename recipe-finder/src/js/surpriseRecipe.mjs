@@ -7,7 +7,6 @@ export async function showSurpriseRecipe() {
     return;
   }
 
-  
   const ingredients = [];
   for (let i = 1; i <= 20; i++) {
     const ing = meal[`strIngredient${i}`];
@@ -17,9 +16,8 @@ export async function showSurpriseRecipe() {
     }
   }
 
-  
   let saved = JSON.parse(localStorage.getItem("favorites")) || [];
-  const alreadySaved = saved.find((fav) => fav.id === meal.idMeal);
+  const alreadySaved = saved.find((fav) => fav.id === meal.idMeal && fav.source === "mealdb");
 
   const modal = document.createElement("div");
   modal.classList.add("surprise-modal");
@@ -40,15 +38,12 @@ export async function showSurpriseRecipe() {
 
   document.body.appendChild(modal);
 
-  document
-    .querySelector(".close-btn")
-    .addEventListener("click", () => modal.remove());
+  document.querySelector(".close-btn").addEventListener("click", () => modal.remove());
 
-  
   const saveBtn = document.getElementById("save-surprise-btn");
   saveBtn.addEventListener("click", () => {
     if (alreadySaved) {
-      saved = saved.filter((fav) => fav.id !== meal.idMeal);
+      saved = saved.filter((fav) => !(fav.id === meal.idMeal && fav.source === "mealdb"));
       alert("Removed from favorites.");
       saveBtn.textContent = "❤️ Save to Favorites";
     } else {
@@ -57,6 +52,7 @@ export async function showSurpriseRecipe() {
         title: meal.strMeal,
         image: meal.strMealThumb,
         source: "mealdb",
+        full: meal // Store full recipe object for modal rendering later
       });
       alert("Saved to favorites!");
       saveBtn.textContent = "🗑 Remove from Favorites";

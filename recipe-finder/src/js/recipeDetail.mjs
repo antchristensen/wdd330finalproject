@@ -1,8 +1,9 @@
+// src/js/recipeDetail.mjs
 import { fetchRecipeById } from "./api.mjs";
 import { loadPartials } from "./utils.mjs";
 
 async function init() {
-  await loadPartials(); 
+  await loadPartials();
 
   const container = document.getElementById("recipe-details");
   const params = new URLSearchParams(window.location.search);
@@ -19,9 +20,16 @@ async function init() {
     return;
   }
 
+  // ✅ Store env variable outside template string
+  const apiKey = import.meta.env.VITE_SPOONACULAR_KEY;
   const nutritionHTML = `
-    <iframe src="https://api.spoonacular.com/recipes/${recipeId}/nutritionWidget?apiKey=${import.meta.env.VITE_SPOONACULAR_KEY}" 
-    width="100%" height="300" frameborder="0"></iframe>
+    <iframe 
+      src="https://api.spoonacular.com/recipes/${recipeId}/nutritionWidget?apiKey=${apiKey}" 
+      width="100%" 
+      height="300" 
+      frameborder="0"
+      loading="lazy"
+    ></iframe>
   `;
 
   container.innerHTML = `
@@ -74,4 +82,4 @@ async function init() {
   });
 }
 
-init(); 
+init();

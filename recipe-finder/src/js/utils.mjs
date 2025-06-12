@@ -1,3 +1,6 @@
+export const BASE_PATH = import.meta.env.BASE_URL || "";
+
+
 export function setupHamburgerToggle() {
   const hamburger = document.getElementById("hamburger");
   const nav = document.getElementById("main-nav");
@@ -10,11 +13,13 @@ export function setupHamburgerToggle() {
 }
 
 export async function loadPartials() {
-  const header = await fetch("/public/partials/header.html");
-  const footer = await fetch("/public/partials/footer.html");
+  const base = "/recipe-finder/partials";
+
+  const header = await fetch(`${base}/header.html`);
+  const footer = await fetch(`${base}/footer.html`);
 
   document.getElementById("site-header").innerHTML = await header.text();
   document.getElementById("site-footer").innerHTML = await footer.text();
 
-  setupHamburgerToggle(); 
+  setupHamburgerToggle();
 }
