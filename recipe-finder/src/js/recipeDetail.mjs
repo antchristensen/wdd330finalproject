@@ -1,6 +1,10 @@
-// src/js/recipeDetail.mjs
+
 import { fetchRecipeById } from "./api.mjs";
 import { loadPartials } from "./utils.mjs";
+
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+});
 
 async function init() {
   await loadPartials();
@@ -20,7 +24,6 @@ async function init() {
     return;
   }
 
-  // ✅ Store env variable outside template string
   const apiKey = import.meta.env.VITE_SPOONACULAR_KEY;
   const nutritionHTML = `
     <iframe 
@@ -81,5 +84,3 @@ async function init() {
     updateFavButton();
   });
 }
-
-init();

@@ -1,6 +1,5 @@
 export const BASE_PATH = import.meta.env.BASE_URL || "";
 
-
 export function setupHamburgerToggle() {
   const hamburger = document.getElementById("hamburger");
   const nav = document.getElementById("main-nav");
@@ -13,7 +12,7 @@ export function setupHamburgerToggle() {
 }
 
 export async function loadPartials() {
-  const base = "/recipe-finder/partials";
+  const base = `${BASE_PATH}partials`;
 
   const header = await fetch(`${base}/header.html`);
   const footer = await fetch(`${base}/footer.html`);

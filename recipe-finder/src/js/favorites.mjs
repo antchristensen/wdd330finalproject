@@ -1,4 +1,8 @@
-import { loadPartials, BASE_PATH } from "./utils.mjs";
+import { loadPartials } from "./utils.mjs";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initFavoritesPage();
+});
 
 async function initFavoritesPage() {
   await loadPartials();
@@ -16,12 +20,10 @@ async function initFavoritesPage() {
       card.innerHTML = `
         <img src="${recipe.image}" alt="${recipe.title}" class="recipe-img" />
         <h3>${recipe.title}</h3>
-        <a href="${BASE_PATH}src/product_pages/recipe-detail.html?id=${recipe.id}" class="view-details-button">🔍 View Details</a>
+        <a href="src/product_pages/recipe-detail.html?id=${recipe.id}" class="view-details-button">🔍 View Details</a>
       `;
 
       container.appendChild(card);
     });
   }
 }
-
-initFavoritesPage();
