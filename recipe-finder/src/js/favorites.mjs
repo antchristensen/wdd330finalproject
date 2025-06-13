@@ -20,7 +20,7 @@ async function initFavoritesPage() {
       card.innerHTML = `
         <img src="${recipe.image}" alt="${recipe.title}" class="recipe-img" />
         <h3>${recipe.title}</h3>
-        <a href="src/product_pages/recipe-detail.html?id=${recipe.id}" class="view-details-button">🔍 View Details</a>
+        <a href="/src/product_pages/recipe-detail.html?id=${recipe.id}" class="view-details-button">🔍 View Details</a>
       `;
 
       container.appendChild(card);
