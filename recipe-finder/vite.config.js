@@ -1,4 +1,3 @@
-console.log("🚨 Vite config is being loaded");
 
 import { defineConfig } from 'vite';
 import { resolve } from 'path';

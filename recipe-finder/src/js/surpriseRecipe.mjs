@@ -52,7 +52,7 @@ export async function showSurpriseRecipe() {
         title: meal.strMeal,
         image: meal.strMealThumb,
         source: "mealdb",
-        full: meal // Store full recipe object for modal rendering later
+        full: meal 
       });
       alert("Saved to favorites!");
       saveBtn.textContent = "🗑 Remove from Favorites";

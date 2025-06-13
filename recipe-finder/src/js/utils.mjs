@@ -21,4 +21,12 @@ export async function loadPartials() {
   document.getElementById("site-footer").innerHTML = await footer.text();
 
   setupHamburgerToggle();
+
+  
+  document.querySelectorAll('[data-hardload]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = link.href; 
+    });
+  });
 }
