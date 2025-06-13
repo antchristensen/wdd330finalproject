@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/', // <- changed from '/recipe-finder/'
+  base: '/', // update if your Netlify site uses a different subpath
   build: {
     rollupOptions: {
       input: {
